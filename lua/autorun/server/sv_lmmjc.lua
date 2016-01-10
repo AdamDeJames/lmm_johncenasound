@@ -7,10 +7,10 @@ function JohnCenaHasReallyJoinedTheServer( ply )
 		if !ply:IsValid() then
 			return
 		end
-		if ply:IsAdmin() then
-			for k,v in pairs(player.GetAll()) do
+		for k,v in pairs(player.GetAll()) do // the way you had it was weird to me sorry. lawl.
+			if v:IsAdmin() then
 				net.Start("LMMJCHasJoined")
-				net.Send(v)
+				net.Broadcast()
 			end
 		end
 	end)
